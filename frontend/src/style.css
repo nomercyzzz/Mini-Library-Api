@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0d0d0d;
+  --color-surface: #111111;
+  --color-surface-hover: #181818;
+  --color-border: #222222;
+  --color-border-hover: #3a3a3a;
+  --color-accent: #ffffff;
+  --color-accent-subtle: rgba(255, 255, 255, 0.06);
+  --color-accent-border: rgba(255, 255, 255, 0.15);
+  --color-muted: #444444;
+  --color-error-bg: #1a0a0a;
+  --color-error-border: #5c1a1a;
+  --color-error-text: #ff6b6b;
+}
+
+/* ── Инпут ── */
+.input {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: #fff;
+  padding: 10px 16px;
+  font-size: 0.875rem;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.4s ease-out, box-shadow 0.4s ease-out;
+}
+
+.input::placeholder { color: var(--color-muted); }
+
+.input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+}
+
+/* ── Кнопка ── */
+.btn {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border: none;
+  padding: 10px 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.btn:hover { opacity: 0.8; }
+.btn:active { transform: scale(0.95); }
+.btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
+
+/* ── Карточка книги ── */
+.book-item {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  cursor: default;
+  transition: border-color 0.4s ease-out, background 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.book-item:hover {
+  border-color: var(--color-border-hover);
+  background: var(--color-surface-hover);
+  transform: translateY(-3px);
+}
+
+.book-id {
+  font-family: monospace;
+  font-size: 11px;
+  color: var(--color-muted);
+  background: var(--color-accent-subtle);
+  border: 1px solid var(--color-accent-border);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* ── Страница ── */
+@keyframes pageIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.page-enter { animation: pageIn 0.6s ease-out forwards; }
+
+/* ── Уведомления ── */
+@keyframes notifyIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes notifyOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-10px); }
+}
+
+.notify-enter-active { animation: notifyIn 0.4s ease-out forwards; }
+.notify-leave-active { animation: notifyOut 0.4s ease-out forwards; }
+
+/* ── Список книг ── */
+@keyframes bookIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bookOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-10px); }
+}
+
+.fade-slide-enter-active { animation: bookIn 0.4s ease-out forwards; }
+.fade-slide-leave-active  { animation: bookOut 0.4s ease-out forwards; }
